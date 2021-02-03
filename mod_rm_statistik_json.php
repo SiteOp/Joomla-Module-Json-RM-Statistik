@@ -29,21 +29,6 @@ $curl          = modRmStatistikJsonHelper::getCurl($url, $params);
 $jrequest      = modRmStatistikJsonHelper::getJson();
 $css           = modRmStatistikJsonHelper::getCSS($params);
 
-$statistik = array(); 
-foreach ($jrequest as $request) {
-	$statistik[] = $request; 
-
-}
-
-
-if (1 == $debugapi)
-{
-print_r($debugapi);
-print_r($statistik[2]);
-}
-
-
-$url_route = 'https://www.llz-a.de/component/act/route/';
 
 
 require JModuleHelper::getLayoutPath('mod_rm_statistik_json', $params->get('layout', 'default'));

@@ -65,7 +65,7 @@
 		</fieldset>
 
 		<fieldset name="Routes" label="Routes">
-			<field  name="countroutes" 
+			<field  name="limit_routes" 
 					type="number" 
 					default="5" 
 					label="Anzahl Routen" 
@@ -79,7 +79,7 @@
 		</fieldset>
 
 		<fieldset name="Comments" label="Kommentare">
-			<field  name="countcomments" 
+			<field  name="limit_comments" 
 					type="number" 
 					default="5" 
 					label="Anzahl Kommentar" 

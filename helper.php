@@ -40,15 +40,15 @@ class ModRmStatistikJsonHelper
 
 	public static function getCurlUrl($params)
 	{
-		$rm_url        = $params->get('rm_url');
-		$endpoint      = $params->get('endpoint');
-		$apiKey  	   = $params->get('apikey');
-		$countroutes   = $params->get('countroutes'); 
-		$countcomments = $params->get('countcomments'); 
+		$rm_url           = $params->get('rm_url');
+		$endpoint         = $params->get('endpoint');
+		$apiKey  	      = $params->get('apikey');
+		$limit_comments   = $params->get('limit_comments'); 
+		$limit_routes     = $params->get('limit_routes'); 
 		
 
 		
-	$url = "$rm_url/rmapi-statistik/get/rm_statistik/list?limit=$countroutes&api_key=$apiKey";
+	$url = "$rm_url/$endpoint/get/rm_statistik/list?limit_routes=$limit_routes&limit_comments=$limit_comments&api_key=$apiKey";
 
 		return $url;
 	}
