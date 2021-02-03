@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+/**
+ * @version         1.0.0
+ * @package         JSON Modul RM Statstisk
+ * 
+ * @author          Richard Gebhard <gebhard@site-optimierer.de>
+ * @link            https://www.site-optimierer.de
+ * @copyright       Copyright © 2020 Site-Optimierer All Rights Reserved
+ * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ */
+-->
+<extension type="module" method="upgrade" client="site">
+	<name>mod_rm_statistik_json</name>
+	<creationDate>02/2021</creationDate>
+	<author>Richard Gebhard</author>
+	<authorEmail>gebhard@site-optimierer.de</authorEmail>
+	<authorUrl>https://www.site-optimierer.de/</authorUrl>
+	<copyright>Copyright © 2018 - All rights reserved.</copyright>
+	<license>GNU General Public License v2.0</license>
+	<version>1.0.0</version>
+	<description>Routes-Manager Import Statistik</description>
+	<files>
+		<filename module="mod_rm_statistik_json">mod_rm_statistik_json.php</filename>
+		<filename>mod_rm_statistik_json.xml</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<folder>tmpl</folder>
+		<folder>cache</folder>
+	</files>
+	<media folder="media" destination="mod_rm_statistik_json">
+		<folder>css</folder>
+	</media>
+	<languages folder="language">
+		<language tag="de-DE">de-DE/de-DE.mod_rm_statistik_json.sys.ini</language>
+		<language tag="de-DE">de-DE/de-DE.mod_rm_statistik_json.ini</language>
+	</languages>
+	<config>
+
+	<fields name="params">
+
+		<fieldset name="basic">
+		    <field  name="NoteKey" 
+				 	type="note" 
+				   	label="Verbindungsdaten" 
+			/>
+			<field  name="rm_url" 
+				   	type="url" 
+				   	label="URL der Routendatenbank" 
+					filter="string"
+					required ="true"
+			/>
+			<field  name="endpoint" 
+				   	type="text" 
+				    default="rmapi-statistik" 
+				    label="Endpoint" 
+				    filter="string"
+				   	required ="true"
+			/>
+			<field  name="apikey" 
+					type="text"  
+					label="Api-Key" 
+					filter="string"
+					required ="true"
+			/>
+		</fieldset>
+
+		<fieldset name="Routes" label="Routes">
+			<field  name="countroutes" 
+					type="number" 
+					default="5" 
+					label="Anzahl Routen" 
+					description="Wieviele Routen sollen abgerufen werden?" 
+					filter="integer"
+					min="1" 
+					max="500" 
+					step="1"
+					required ="true"
+			/>
+		</fieldset>
+
+		<fieldset name="Comments" label="Kommentare">
+			<field  name="countcomments" 
+					type="number" 
+					default="5" 
+					label="Anzahl Kommentar" 
+					description="Wieviele Kommentare sollen abgerufen werden?" 
+					filter="integer"
+					min="1" 
+					max="500" 
+					step="1"
+					required ="true"
+			/>
+		</fieldset>
+
+		<fieldset name="debug" label="Debug / Cache">
+				<field  name="debugapi" 
+						type="radio" 
+						buttons="true" 
+						class="btn-group btn-group-yesno" 
+						default="0" 
+						label="API Debug Status" 
+						description="MOD_SOP_DEBUG_API_STATUS_DESC" >
+							<option value="1">Debug ein</option>
+							<option value="0">Debug aus</option>
+				</field>
+				<field  name="NoteDebugYes" 
+						type="note" 
+						close="true"
+						class="alert alert-info" 
+						description="Wenn Debug eingeschalten sollte der Cache auch ausgeschalten werden!"
+						showon="debugapi:1"
+				/>
+				<field 
+					name="refresh" 
+					type="list" 
+					buttons="true" 
+					class="btn-group btn-group-yesno" 
+					default="1" 
+					label="Json-Antwort speichern" 
+					description="Json-Request wird in einer Datei gespeichert" >
+					<option value="1">Kein Cache</option>
+					<option value="0">Cache verwenden</option>
+				</field>
+				<field 
+					name="cachetime"
+					type="text"
+					default="1440"
+					label="Cache Time"
+					description="Cache Time"
+					filter="integer"
+					showon="refresh:0"
+				/>
+		</fieldset>
+
+		<fieldset name="css" label="CSS-Style" >
+				<field
+					name="css" 
+					type="list"
+					default="0"
+					label="MOD_SOP_LOAD_CSS"
+					description="MOD_SOP_LOAD_CSS_DESC"
+					class="btn-group">
+						<option value="0">Standard</option>
+						<option value="1">MOD_SOP_NOT_LOAD_CSS</option>
+				</field>
+				
+				
+			</fieldset>
+			<fieldset
+				name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea" rows="3"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static">
+					<option
+						value="static"></option>
+				</field>
+			</fieldset>
+</fields>
+	</config>
+</extension>
