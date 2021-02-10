@@ -1,7 +1,20 @@
 
+#rmstatistk {font-size: 90%!important;}
+#rmstatistk a {hyphens: auto;  color: #15252e!important; font-weight: normal!important;}
+#rmstatistk a i {color: #708793;}
+
+.rm_header {margin-left: 25px; color: #708793; font-size: 110%; font-weight: bold; margin-bottom: .3rem; display: block;}
+.rmicon i { position: absolute; color: #708793!important;}
+.rmicon .fas  {font-size: 20px; margin-top: 3px; }
+.rm_footer {margin: 1.5rem 0 1.6rem 0;}
+.rm_footer_txt {font-weight: bold; color: #708793; }
+.rm_footer i {font-size: 25px; position: relative}
+.rm_footer .fas { margin-right: -13px; margin-top: -5px;}
+
+.featured .popover {max-width: 100%!important; min-width: 300px!important;}
 
 :root {
-  --star-size: 50px0px;
+  --star-size: 120%;
   --star-color: grey;
   --star-background: orange;
 }
@@ -20,5 +33,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 
 
