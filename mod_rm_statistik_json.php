@@ -15,6 +15,9 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 
+$user = Factory::getUser();
+$isAdmin = $user->get('isRoot');
+
 $doc = Factory::getDocument();
 
 // Include the syndicate functions only once
@@ -29,6 +32,12 @@ $curl          = modRmStatistikJsonHelper::getCurl($url, $params);
 $jrequest      = modRmStatistikJsonHelper::getJson();
 $css           = modRmStatistikJsonHelper::getCSS($params);
 
+$rm_url        = $params->get('rm_url'); // URL der Routendatenbank
+$url_rm_route  = "/component/act/route/"; // Link zu der Route 
+$count_routes  = count($jrequest->data->route); 
+$show_beginn_routes = $params->get('show_beginn_routes');
+$count_comments = count($jrequest->data->comment); 
+$show_beginn_comments = $params->get('show_beginn_comments');
 
 
 require JModuleHelper::getLayoutPath('mod_rm_statistik_json', $params->get('layout', 'default'));

@@ -65,6 +65,17 @@
 		</fieldset>
 
 		<fieldset name="Routes" label="Routes">
+			<field  name="show_beginn_routes" 
+					type="number" 
+					default="5" 
+					label="Anzahl Routen Start" 
+					description="Wieviele Routen sollen als erstes angezeigt werden?" 
+					filter="integer"
+					min="1" 
+					max="500" 
+					step="1"
+					required ="true"
+			/>
 			<field  name="limit_routes" 
 					type="number" 
 					default="5" 
@@ -79,11 +90,22 @@
 		</fieldset>
 
 		<fieldset name="Comments" label="Kommentare">
+			<field  name="show_beginn_comments" 
+					type="number" 
+					default="5" 
+					label="Anzahl Kommentar Start" 
+					description="Wieviele Kommentare sollen abgerufen werden?" 
+					filter="integer"
+					min="1" 
+					max="500" 
+					step="1"
+					required ="true"
+			/>
 			<field  name="limit_comments" 
 					type="number" 
 					default="5" 
 					label="Anzahl Kommentar" 
-					description="Wieviele Kommentare sollen abgerufen werden?" 
+					description="Wieviele Kommentare sollen als erstes angezeigt werden?" 
 					filter="integer"
 					min="1" 
 					max="500" 
@@ -99,7 +121,7 @@
 						class="btn-group btn-group-yesno" 
 						default="0" 
 						label="API Debug Status" 
-						description="MOD_SOP_DEBUG_API_STATUS_DESC" >
+						description="Wenn der Debug verwendet wird sollte bei Cache-Datei aktualisieren Permanent aktualisieren gewählt sein" >
 							<option value="1">Debug ein</option>
 							<option value="0">Debug aus</option>
 				</field>
@@ -107,7 +129,7 @@
 						type="note" 
 						close="true"
 						class="alert alert-info" 
-						description="Wenn Debug eingeschalten sollte der Cache auch ausgeschalten werden!"
+						description="Wenn Debug eingeschalten ist Cache ausschalten!"
 						showon="debugapi:1"
 				/>
 				<field 
@@ -117,7 +139,7 @@
 					class="btn-group btn-group-yesno" 
 					default="1" 
 					label="Json-Antwort speichern" 
-					description="Json-Request wird in einer Datei gespeichert" >
+					description="JSON-Request wird in einer Datei gespeichert" >
 					<option value="1">Kein Cache</option>
 					<option value="0">Cache verwenden</option>
 				</field>
@@ -126,7 +148,7 @@
 					type="text"
 					default="1440"
 					label="Cache Time"
-					description="Cache Time"
+					description="Dauer des Cache in Sekunden 1 Minute = 60, 1 Tag = 1440. Es werden nur positive Zahlen ausgewertet."
 					filter="integer"
 					showon="refresh:0"
 				/>
@@ -135,13 +157,14 @@
 		<fieldset name="css" label="CSS-Style" >
 				<field
 					name="css" 
-					type="list"
+					type="radio"
 					default="0"
-					label="MOD_SOP_LOAD_CSS"
-					description="MOD_SOP_LOAD_CSS_DESC"
-					class="btn-group">
-						<option value="0">Standard</option>
-						<option value="1">MOD_SOP_NOT_LOAD_CSS</option>
+					label="CSS laden"
+					description="Css-Datei laden?"
+					class="btn-group btn-group-yesno"
+					>
+						<option value="0">Css Laden</option>
+						<option value="1">Eigenes CSS</option>
 				</field>
 				
 				
