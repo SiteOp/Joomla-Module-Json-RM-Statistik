@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!--
 /**
- * @version         1.0.0
+ * @version         1.0.1
  * @package         JSON Modul RM Statstisk
  * 
  * @author          Richard Gebhard <gebhard@site-optimierer.de>
@@ -10,14 +10,14 @@
  */
 -->
 <extension type="module" method="upgrade" client="site">
-	<name>mod_rm_statistik_json</name>
+	<name>RM Statistik - JSON</name>
 	<creationDate>02/2021</creationDate>
 	<author>Richard Gebhard</author>
 	<authorEmail>gebhard@site-optimierer.de</authorEmail>
 	<authorUrl>https://www.site-optimierer.de/</authorUrl>
 	<copyright>Copyright © 2018 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<description>Routes-Manager Import Statistik</description>
 	<files>
 		<filename module="mod_rm_statistik_json">mod_rm_statistik_json.php</filename>
@@ -34,6 +34,9 @@
 		<language tag="de-DE">de-DE/de-DE.mod_rm_statistik_json.sys.ini</language>
 		<language tag="de-DE">de-DE/de-DE.mod_rm_statistik_json.ini</language>
 	</languages>
+    <updateservers>
+		<server type="extension" priority="1" name="RM Statistik Module - JSON">https://update.site-optimierer.de/Module/mod_rm_statistik_json/mod_rm_statistik_json.xml</server>
+	</updateservers>
 	<config>
 
 	<fields name="params">
@@ -65,13 +68,33 @@
 		</fieldset>
 
 		<fieldset name="Routes" label="Routes">
+			<field  name="routes_total" 
+					type="radio" 
+					buttons="true" 
+					class="btn-group btn-group-yesno" 
+					default="0" 
+					label="Anzahl Routen abrufen?" 
+					description="Soll die Gesamtzahl der aktuellen Routen abgerufen werden?" >
+						<option value="1">JYES</option>
+						<option value="0">JNO</option>
+			</field>
+			<field  name="new_routes_total" 
+					type="radio" 
+					buttons="true" 
+					class="btn-group btn-group-yesno" 
+					default="0" 
+					label="Anzahl neuer Routen abrufen?" 
+					description="Anzahl von neuen Routen abrufen?" >
+						<option value="1">JYES</option>
+						<option value="0">JNO</option>
+			</field>
 			<field  name="show_beginn_routes" 
 					type="number" 
 					default="5" 
 					label="Anzahl Routen Start" 
 					description="Wieviele Routen sollen als erstes angezeigt werden?" 
-					filter="integer"
-					min="1" 
+					filter="uint"
+					min="0" 
 					max="500" 
 					step="1"
 					required ="true"
@@ -81,22 +104,32 @@
 					default="5" 
 					label="Anzahl Routen" 
 					description="Wieviele Routen sollen abgerufen werden?" 
-					filter="integer"
-					min="1" 
-					max="500" 
+					filter="uint"
+					min="0"
+					max="50"
 					step="1"
 					required ="true"
 			/>
 		</fieldset>
 
 		<fieldset name="Comments" label="Kommentare">
+			<field  name="comments_total" 
+					type="radio" 
+					buttons="true" 
+					class="btn-group btn-group-yesno" 
+					default="0" 
+					label="Anzahl Kommentare abrufen?" 
+					description="Soll die Gesamtzahl der aktuellen Kommentare abgerufen werden?" >
+						<option value="1">JYES</option>
+						<option value="0">JNO</option>
+			</field>		
 			<field  name="show_beginn_comments" 
 					type="number" 
 					default="5" 
 					label="Anzahl Kommentar Start" 
 					description="Wieviele Kommentare sollen abgerufen werden?" 
-					filter="integer"
-					min="1" 
+					filter="uint"
+					min="0" 
 					max="500" 
 					step="1"
 					required ="true"
@@ -106,9 +139,9 @@
 					default="5" 
 					label="Anzahl Kommentar" 
 					description="Wieviele Kommentare sollen als erstes angezeigt werden?" 
-					filter="integer"
-					min="1" 
-					max="500" 
+					filter="uint"
+					min="0" 
+					max="50" 
 					step="1"
 					required ="true"
 			/>

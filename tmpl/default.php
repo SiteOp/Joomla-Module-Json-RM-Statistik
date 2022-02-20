@@ -44,7 +44,7 @@ use Joomla\CMS\Uri\Uri;
 				<div class="statistik_body">
 					<?php foreach ($jrequest->data->comment as $comment) : ?>
 						<div>
-							<div class="Stars" style="--star-size: 100%; --rating: <?php echo $comment->stars; ?>;"></div>
+							<?php echo $comment->stars; ?><br />
 							<?php echo HTMLHelper::_('string.truncate', $comment->comment, 90, false, false ); ?>
 						</div>	
 					<?php endforeach; ?>

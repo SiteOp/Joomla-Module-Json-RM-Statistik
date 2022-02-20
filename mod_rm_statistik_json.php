@@ -34,10 +34,13 @@ $css           = modRmStatistikJsonHelper::getCSS($params);
 
 $rm_url        = $params->get('rm_url'); // URL der Routendatenbank
 $url_rm_route  = "/component/act/route/"; // Link zu der Route 
-$count_routes  = count($jrequest->data->route); 
 $show_beginn_routes = $params->get('show_beginn_routes');
-$count_comments = count($jrequest->data->comment); 
 $show_beginn_comments = $params->get('show_beginn_comments');
-
+if($jrequest->data->route !=0) {
+    $count_routes  = count($jrequest->data->route);
+}
+if($jrequest->data->comment !=0) {
+    $count_comments = count($jrequest->data->comment); 
+}
 
 require JModuleHelper::getLayoutPath('mod_rm_statistik_json', $params->get('layout', 'default'));

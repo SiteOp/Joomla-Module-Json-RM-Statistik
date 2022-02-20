@@ -40,15 +40,16 @@ class ModRmStatistikJsonHelper
 
 	public static function getCurlUrl($params)
 	{
-		$rm_url           = $params->get('rm_url');
-		$endpoint         = $params->get('endpoint');
-		$apiKey  	      = $params->get('apikey');
-		$limit_comments   = $params->get('limit_comments'); 
-		$limit_routes     = $params->get('limit_routes'); 
+		$rm_url          	 = $params->get('rm_url', 0, 'STRING');
+		$endpoint        	 = $params->get('endpoint', 0, 'STRING');
+		$apiKey  	    	 = $params->get('apikey', 0, 'STRING');
+		$limit_routes   	 = $params->get('limit_routes', 0, 'UINT'); 
+		$limit_comments   	 = $params->get('limit_comments', 0, 'UINT'); 
+		$routes_total  		 = $params->get('routes_total', 0, 'BOOL');
+		$comments_total 	 = $params->get('comments_total', 0, 'BOOL');
+		$new_routes_total 	 = $params->get('new_routes_total', 0, 'BOOL');
 		
-
-		
-	$url = "$rm_url/$endpoint/get/rm_statistik/list?limit_routes=$limit_routes&limit_comments=$limit_comments&api_key=$apiKey";
+		$url = "$rm_url/$endpoint/get/rm_statistik/list?limit_routes=$limit_routes&limit_comments=$limit_comments&routes_total=$routes_total&comments_total=$comments_total&new_routes_total=$new_routes_total&api_key=$apiKey";
 
 		return $url;
 	}
@@ -84,7 +85,7 @@ class ModRmStatistikJsonHelper
 				CURLOPT_ENCODING         => "",
 				CURLOPT_AUTOREFERER      => true, 
 				CURLOPT_CONNECTTIMEOUT   => 20,
-				CURLOPT_HTTPHEADER => $headers,
+			//	CURLOPT_HTTPHEADER => $headers,
 				CURLOPT_TIMEOUT          => 20,
 				CURLOPT_MAXREDIRS        => 3,
 				CURLOPT_SSL_VERIFYHOST   => 2,
